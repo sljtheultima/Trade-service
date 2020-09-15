@@ -4,7 +4,7 @@ COPY build/libs/trade-simulator-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8089
 
-ENV DB_HOST=tradedb:27017
+ENV DB_HOST=mymongodb:27017
 ENV DB_NAME=tradedb
 ENV SERVER_PORT=8089
 
