@@ -1,13 +1,11 @@
 package com.conygre.training.tradesimulator.sim;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.conygre.training.tradesimulator.dao.TradeMongoDao;
 import com.conygre.training.tradesimulator.model.Trade;
 import com.conygre.training.tradesimulator.model.TradeState;
 
-import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,18 +32,6 @@ public class TradeSim {
         return foundTrades;
     }
 
-    public Trade insertOrUpdateTrade(Trade trade){
-        return tradeDao.save(trade);
-    }
-    public Optional<Trade> getTrade(ObjectId id){
-        return tradeDao.findById(id);
-    }
-
-    public List<Trade> getTradeByState(TradeState state){
-        return tradeDao.findByState(state);
-    }
-
-
     @Transactional
     public List<Trade> findTradesForFilling(){
         List<Trade> foundTrades = tradeDao.findByState(TradeState.PROCESSING);
@@ -63,7 +49,7 @@ public class TradeSim {
         return foundTrades;
     }
 
-    @Scheduled(fixedRateString = "${scheduleRateMs:1000}")
+    @Scheduled(fixedRateString = "${scheduleRateMs:10000}")
     public void runSim() {
         LOG.debug("Main loop running!");
 
