@@ -63,7 +63,7 @@ public class TradeSim {
         return foundTrades;
     }
 
-    @Scheduled(fixedRateString = "${scheduleRateMs:10000}")
+    @Scheduled(fixedRateString = "${scheduleRateMs:1000}")
     public void runSim() {
         LOG.debug("Main loop running!");
 
