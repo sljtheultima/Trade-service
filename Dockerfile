@@ -8,4 +8,6 @@ ENV DB_HOST=mymongodb:27017
 ENV DB_NAME=tradedb
 ENV SERVER_PORT=8089
 
+RUN sh -c 'echo spring.data.mongodb.uri=mongodb://mymongodb:27017/tradedb > application.properties'
+
 ENTRYPOINT ["java", "-jar", "/app.jar"]
